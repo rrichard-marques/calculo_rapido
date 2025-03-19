@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class CalculoRapido {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        int v = 0;
+
+        do {
+            double[] notas = new double[]{200, 100, 50, 20, 10, 5, 2};
+            double[] moedas = new double[]{1, 0.50, 0.25, 0.10, 0.05, 0.01};
+
+            double somaTotal1 = 0;
+            double somaTotal2 = 0;
+            double valorFinal = 0;
+
+            for (int i = 0; i < notas.length; i++) {
+                double aux = notas[i];
+                System.out.printf("Quantas notas de %.2f reais tem?\n", aux);
+                int quantidade = input.nextInt();
+                double total = quantidade * notas[i];
+
+                System.out.printf("Total = %.2f\n", total);
+                System.out.println(" ");
+
+                somaTotal1 = somaTotal1 + total;
+            }
+
+            for (int i = 0; i < moedas.length; i++) {
+                double aux = moedas[i];
+                if (moedas[i] == 1) {
+                    System.out.printf("Quantas moedas de %.2f real tem?\n", aux);
+                } else if (moedas[i] != 1 & moedas[i] != 0.01) {
+                    System.out.printf("Quantas moedas de %.2f centavos tem?\n", aux);
+                } else {
+                    System.out.printf("Quantas moedas de %.2f centavo tem?\n", aux);
+                }
+
+                int quantidade = input.nextInt();
+                double total = quantidade * moedas[i];
+                System.out.printf("Total = %.2f\n", total);
+                System.out.println(" ");
+
+                somaTotal2 = somaTotal2 + total;
+            }
+
+            valorFinal = somaTotal1 + somaTotal2;
+            System.out.printf("O valor final é %.2f \n", valorFinal);
+            System.out.println(" ");
+
+            System.out.println("Deseja fazer outro cálculo?");
+            System.out.println("1 - SIM");
+            System.out.println("2 - NÃO");
+            v = input.nextInt();
+            System.out.println(" ");
+
+            while (v != 1 & v != 2) {
+                System.out.println("Você precisa escolher uma das opções abaixo:");
+                System.out.println("Deseja fazer outro cálculo?");
+                System.out.println("1 - SIM");
+                System.out.println("2 - NÃO");
+                v = input.nextInt();
+                System.out.println(" ");
+            }
+
+        } while (v == 1);
+
+        System.out.println("Foi um prazer ajudar! Quando precisar, estou aqui!");
+    }
+}
